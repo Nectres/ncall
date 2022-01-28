@@ -1,6 +1,6 @@
 {
   "name": "ncall",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Call functions in javascript files direction from the CLI",
   "main": "main.js",
   "scripts": {
