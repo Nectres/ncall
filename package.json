@@ -1,0 +1,18 @@
+{
+  "name": "ncall",
+  "version": "0.1.0",
+  "description": "Call functions in javascript files direction from the CLI",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "call",
+    "cli",
+    "node-cli",
+    "ncall"
+  ],
+  "author": "Keerthi Vasan S A",
+  "license": "MIT",
+  "bin": "bin/index.js"
+}
