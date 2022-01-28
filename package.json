@@ -12,6 +12,7 @@
     "node-cli",
     "ncall"
   ],
+  "repository": "git://github.com/Nectres/ncall.git",
   "author": "Keerthi Vasan S A",
   "license": "MIT",
   "bin": "bin/index.js"
