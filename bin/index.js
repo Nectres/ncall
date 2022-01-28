@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-import { isAbsolute } from "path";
+import { isAbsolute, join } from "path";
 import { statSync } from "fs"
+import { pathToFileURL } from "url";
 
 const cmd = process.argv[2] ?? "index.js/main"
 let parts = cmd.split("/") ?? "index.js/main";
@@ -13,7 +14,9 @@ if (parts.length > 1) {
 }
 let path = parts.join("/");
 method ??= "main";
-path = isAbsolute(path) ? path : "./" + path;
+path = isAbsolute(path) ? path : join(process.cwd(), path);
+if (process.platform == "win32")
+    path = pathToFileURL(path)
 const stats = statSync(path)
 if (!stats.isFile()) {
     console.error("Specified path is not a file")
