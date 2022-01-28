@@ -1,5 +1,5 @@
 {
-  "name": "ncall",
+  "name": "fncall",
   "version": "0.1.2",
   "description": "Call functions in javascript files direction from the CLI",
   "keywords": [
