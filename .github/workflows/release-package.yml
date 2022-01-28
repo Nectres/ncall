@@ -5,17 +5,15 @@ on:
     types: [created]
 
 jobs:
-  publish-gpr:
+  publish:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+          node-version: 10
+      - run: npm install
+      - run: npm test
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
