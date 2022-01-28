@@ -1,13 +1,24 @@
 #!/usr/bin/env node
 
-const { isAbsolute } = require("path");
+import { isAbsolute } from "path";
+import { statSync } from "fs"
+
 const cmd = process.argv[2] ?? "index.js/main"
 let parts = cmd.split("/") ?? "index.js/main";
-let method = parts[parts.length - 1];
-let path = parts.slice(0, parts.length - 1).join("/");
+console.log(parts)
+let method;
+if (parts.length > 1) {
+    method = parts[parts.length - 1];
+    parts = parts.slice(0, parts.length - 1);
+}
+let path = parts.join("/");
 method ??= "main";
 path = isAbsolute(path) ? path : "./" + path;
-console.log(path);
+const stats = statSync(path)
+if (!stats.isFile()) {
+    console.error("Specified path is not a file")
+    process.exit(-1);
+}
 import(path).then((mod) => {
     try {
         let args = process.argv.slice(3).map(val => {

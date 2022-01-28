@@ -10,6 +10,7 @@
   ],
   "repository": "git://github.com/Nectres/ncall.git",
   "author": "Keerthi Vasan S A",
+  "type": "module",
   "license": "MIT",
   "bin": "bin/index.js"
 }
